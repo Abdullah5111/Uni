@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import axios from 'axios';
 
 function Signup({ onToggleClick }) {
     const [username, setUsername] = useState('');
@@ -15,6 +16,26 @@ function Signup({ onToggleClick }) {
   
     const handlePasswordChange = (event) => {
       setPassword(event.target.value);
+    };
+
+    const handleSignupButtonClick = async () => {
+      const userData = {
+        username: username,
+        email: email,
+        password: password,
+      };
+
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/api/users/', userData);
+  
+        if (response.status === 201) {
+          console.log('User registered successfully');
+        } else {
+          console.error('Error registering user');
+        }
+      } catch (error) {
+        console.error('API call error:', error);
+      }
     };
   
     return (
@@ -33,7 +54,10 @@ function Signup({ onToggleClick }) {
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
         <div>
-          <button onClick={onToggleClick}>Login</button>
+          <button onClick={handleSignupButtonClick}>Signup</button>
+        </div>
+        <div>
+          <button onClick={onToggleClick}>Already Account? Login</button>
         </div>
       </div>
     );
