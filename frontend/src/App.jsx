@@ -1,13 +1,10 @@
-// src/App.js
 import React from 'react';
-import Login from './components/Login'; // Import the LoginForm component
+import Auth from  './Pages/Auth'; //Import the Auth component
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Login /> {/* Render the Login component */}
-      </header>
+      <Auth /> {/* Render the Auth component */}
     </div>
   );
 }
