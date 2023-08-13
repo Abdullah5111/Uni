@@ -24,7 +24,7 @@ function Login({ onToggleClick }) {
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
         <div>
-          <button onClick={onToggleClick}>Signup</button>
+          <button onClick={onToggleClick}>New User? Signup</button>
         </div>
       </div>
     );

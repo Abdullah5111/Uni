@@ -1,10 +1,12 @@
 import React from 'react';
 import Auth from  './Pages/Auth'; //Import the Auth component
+import Navbar from './Components/Navbar'
 
 function App() {
   return (
     <div className="App">
-      <Auth /> {/* Render the Auth component */}
+
+      <Navbar /> {/* Render the Navbar component */}
     </div>
   );
 }
