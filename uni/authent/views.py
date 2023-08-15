@@ -1,8 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
-from .models import User
-from .serializers import UserSerializer
-from django.contrib.auth import authenticate
+from .models import User, Links
+from .serializers import UserSerializer, LinksSerializer
 from rest_framework import status
 
 class UserListCreateView(generics.ListCreateAPIView):
@@ -39,3 +38,12 @@ class UserLoginView(generics.CreateAPIView):
                 return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
             return Response({'message': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        
+class LinksListCreateView(generics.ListCreateAPIView):
+    queryset = Links.objects.all()
+    serializer_class = LinksSerializer
+
+class LinksDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Links.objects.all()
+    serializer_class = LinksSerializer
+

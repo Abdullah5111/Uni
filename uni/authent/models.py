@@ -8,4 +8,19 @@ class User(models.Model):
     def __str__(self):
         return self.username
     
+class Links(models.Model):
+    linkedin = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    facebook = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    instagram = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    twitter = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    website = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    slack = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    reddit = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    behance = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    dribbble = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    fiverr = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    upwork = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    freelancer = models.CharField(max_length=250, unique=True, blank=True, null=True)
 
+    def __str__(self) -> str:
+        return self.linkedin
