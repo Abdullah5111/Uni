@@ -23,6 +23,8 @@ function Login({ onToggleClick }) {
         const response = await axios.post('http://127.0.0.1:8000/api/userLogin/', userData);
   
         if (response.status === 200) {
+          const userId = response.data.id;
+          document.cookie = `user_id=${userId}; path=/`;
           console.log('User logged in successfully');
         } else {
           console.error('Error');

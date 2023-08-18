@@ -33,7 +33,7 @@ class UserLoginView(generics.CreateAPIView):
         try:
             user = User.objects.get(email=email)
             if user.password == password:
-                return Response({'message': 'YES'}, status=status.HTTP_200_OK)
+                return Response({'id': user.id}, status=status.HTTP_200_OK)
             else:
                 return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
