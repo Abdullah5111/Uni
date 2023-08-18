@@ -1,12 +1,18 @@
-import React from 'react';
-import Auth from  './Pages/Auth'; //Import the Auth component
-import Navbar from './Components/Navbar'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Auth from './Pages/Auth';
+import MyHome from './Pages/MyHome';
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
     <div className="App">
-
-      <Navbar /> {/* Render the Navbar component */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/"  element={<Auth />} />
+          <Route path="/MyHome" element={<MyHome />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

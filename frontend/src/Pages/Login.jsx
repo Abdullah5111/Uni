@@ -1,7 +1,10 @@
-import React, {useState} from "react"
+import {useState} from "react"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login({ onToggleClick }) {
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
@@ -25,6 +28,9 @@ function Login({ onToggleClick }) {
         if (response.status === 200) {
           const userId = response.data.id;
           document.cookie = `user_id=${userId}; path=/`;
+          
+          navigate('/MyHome');
+          
           console.log('User logged in successfully');
         } else {
           console.error('Error');
