@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function Signup({ onToggleClick }) {
     const [username, setUsername] = useState('');
@@ -57,7 +58,7 @@ function Signup({ onToggleClick }) {
           <button onClick={handleSignupButtonClick}>Signup</button>
         </div>
         <div>
-          <button onClick={onToggleClick}>Already Account? Login</button>
+          <Link to="/">Already Account? Login</Link>
         </div>
       </div>
     );

@@ -11,6 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
+.btn{
+  padding: 5px 10px;
+  border: solid black 2px;
+}
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

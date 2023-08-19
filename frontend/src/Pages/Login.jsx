@@ -1,6 +1,6 @@
 import {useState} from "react"
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Login({ onToggleClick }) {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ function Login({ onToggleClick }) {
           const userId = response.data.id;
           document.cookie = `user_id=${userId}; path=/`;
           
-          navigate('/MyHome');
+          navigate('/my-home');
           
           console.log('User logged in successfully');
         } else {
@@ -55,7 +55,7 @@ function Login({ onToggleClick }) {
           <button onClick={handleLoginButtonClick}>Login</button>
         </div>
         <div>
-          <button onClick={onToggleClick}>New User? Signup</button>
+        <Link to="/sign-up">New User? Signup</Link>
         </div>
       </div>
     );

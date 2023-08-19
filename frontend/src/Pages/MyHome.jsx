@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const MyHome = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -18,17 +21,22 @@ const MyHome = () => {
     console.log(".....");
     console.log(userId);
 
-    axios.get(`http://127.0.0.1:8000/api/links/${userId}`)
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+    if (userId) {
+      axios.get(`http://127.0.0.1:8000/api/links/${userId}`)
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    } else {
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <div>
+      data
     </div>
   );
 }
