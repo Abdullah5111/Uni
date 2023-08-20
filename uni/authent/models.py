@@ -9,6 +9,7 @@ class User(models.Model):
         return self.username
     
 class Links(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Links', default=1)
     linkedin = models.CharField(max_length=250, unique=True, blank=True, null=True)
     facebook = models.CharField(max_length=250, unique=True, blank=True, null=True)
     instagram = models.CharField(max_length=250, unique=True, blank=True, null=True)
