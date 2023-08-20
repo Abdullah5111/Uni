@@ -16,3 +16,8 @@ class LinksSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Links.objects.create(**validated_data)
+
+class LinksUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Links
+        fields = '__all__'

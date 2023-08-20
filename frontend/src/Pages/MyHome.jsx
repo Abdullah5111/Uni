@@ -22,7 +22,7 @@ const MyHome = () => {
     console.log(userId);
 
     if (userId) {
-      axios.get(`http://127.0.0.1:8000/api/links/${userId}`)
+      axios.get(`http://127.0.0.1:8000/api/user/links/${userId}`)
         .then(response => {
           setData(response.data);
         })

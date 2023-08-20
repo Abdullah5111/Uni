@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from .models import User, Links
 from .serializers import UserSerializer, LinksSerializer
 from rest_framework import status
+from django.shortcuts import get_object_or_404
 
 class UserListCreateView(generics.ListCreateAPIView):
     queryset = User.objects.all()
@@ -47,3 +48,16 @@ class LinksDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Links.objects.all()
     serializer_class = LinksSerializer
 
+class LinksByUserIdView(generics.RetrieveAPIView):
+    queryset = Links.objects.all()  # Your queryset for the Links model
+    serializer_class = LinksSerializer
+
+    def get_object(self):
+        user_id = self.kwargs['user_id']  # Get the user_id from URL parameter
+        links = get_object_or_404(Links, user_id=user_id)  # Query Links by user_id
+        return links
+
+    def get(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
