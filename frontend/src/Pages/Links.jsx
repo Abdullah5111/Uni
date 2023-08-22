@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'; // Import useParams
 import axios from 'axios';
 
 const Links = () => {
-  const { username } = useParams(); // Extract username from URL
+  const { username } = useParams();
   const [links, setLinks] = useState(null);
 
   const fetchLinks = async () => {

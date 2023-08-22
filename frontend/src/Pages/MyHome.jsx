@@ -31,9 +31,27 @@ const MyHome = () => {
     }
   }, [navigate]);
 
+  const handleUpdateLink = (linkId) => {
+    
+  };
+
+  const handleDeleteLink = (linkId) => {
+    
+  };
+
   return (
     <div>
-      
+      {data && (
+        <ul>
+          {data.linkedin && (
+            <li>
+              LinkedIn: {data.linkedin}{' '}
+              <button onClick={() => handleUpdateLink(data.id)}>Update</button>
+              <button onClick={() => handleDeleteLink(data.id)}>Delete</button>
+            </li>
+          )}
+        </ul>
+      )}
     </div>
   );
 }
