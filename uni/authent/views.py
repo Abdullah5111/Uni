@@ -61,3 +61,19 @@ class LinksByUserIdView(generics.RetrieveAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
+class LinksByUsernameView(generics.RetrieveAPIView):
+    queryset = Links.objects.all()
+    serializer_class = LinksSerializer
+    lookup_field = 'username'
+
+    def get_object(self):
+        username = self.kwargs['username']
+        user = get_object_or_404(User, username=username)
+        links = get_object_or_404(Links, user=user)
+        return links
+
+    def get(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)

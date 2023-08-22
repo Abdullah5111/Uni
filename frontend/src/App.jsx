@@ -3,6 +3,7 @@ import MyHome from './Pages/MyHome';
 import Navbar from './Components/Navbar';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import Links from './Pages/Links';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" exact element={<Login />} />
           <Route path="/sign-up" exact element={<Signup />} />
           <Route path="/my-home" element={<MyHome />} />
+          <Route path="/:username" element={<Links />} />
         </Routes>
       </Router>
     </div>

@@ -18,9 +18,6 @@ const MyHome = () => {
       }
     }
 
-    console.log(".....");
-    console.log(userId);
-
     if (userId) {
       axios.get(`http://127.0.0.1:8000/api/user/links/${userId}`)
         .then(response => {
@@ -36,7 +33,7 @@ const MyHome = () => {
 
   return (
     <div>
-      data
+      
     </div>
   );
 }
