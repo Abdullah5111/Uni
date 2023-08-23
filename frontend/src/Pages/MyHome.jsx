@@ -31,27 +31,26 @@ const MyHome = () => {
     }
   }, [navigate]);
 
-  const handleUpdateLink = (linkId) => {
-    
-  };
+  const saveChanges = () =>{
 
-  const handleDeleteLink = (linkId) => {
-    
-  };
+  }
 
   return (
     <div>
-      {data && (
-        <ul>
-          {data.linkedin && (
-            <li>
-              LinkedIn: {data.linkedin}{' '}
-              <button onClick={() => handleUpdateLink(data.id)}>Update</button>
-              <button onClick={() => handleDeleteLink(data.id)}>Delete</button>
-            </li>
-          )}
-        </ul>
-      )}
+      <div>
+      {Object.keys(data).map(property => (
+        <div key={property}>
+          <label>{property}:</label>
+          <input
+            type="text"
+            value={data[property]}
+          />
+        </div>
+      ))}
+    </div>
+      <div>
+        <button onClick={saveChanges}>Save</button>
+      </div>
     </div>
   );
 }
