@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams, useNavigate } from 'react-router-dom'; // Import useParams
 import axios from 'axios';
 
 const Links = () => {
+  const navigate = useNavigate()
+
   const { username } = useParams();
   const [links, setLinks] = useState(null);
 
@@ -11,7 +13,8 @@ const Links = () => {
       const response = await axios.get(`http://127.0.0.1:8000/api/user/links/${username}/`);
       setLinks(response.data);
     } catch (error) {
-      console.error('Error fetching links:', error);
+      console.error(`User ${username} not exists`, error);
+      navigate('/');
     }
   };
 

@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Signup({ onToggleClick }) {
+function Signup() {
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,12 +31,36 @@ function Signup({ onToggleClick }) {
         const response = await axios.post('http://127.0.0.1:8000/api/users/', userData);
   
         if (response.status === 201) {
+          const userId = response.data.id;
+          
+          document.cookie = `user_id=${userId}; path=/`;
+
+          const linksData = {
+            user: userId,
+            linkedin: null,
+            facebook: null,
+            instagram: null,
+            twitter: null,
+            website: null,
+            slack: null,
+            reddit: null,
+            behance: null,
+            dribbble: null,
+            fiverr: null,
+            upwork: null,
+            freelancer: null,
+          };
+  
+          await axios.post('http://127.0.0.1:8000/api/links/', linksData);
+          
+          navigate('/my-home');
+          
           console.log('User registered successfully');
         } else {
           console.error('Error registering user');
         }
       } catch (error) {
-        console.error('API call error:', error);
+        console.error(error);
       }
     };
   

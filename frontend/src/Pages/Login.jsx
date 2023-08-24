@@ -36,7 +36,7 @@ function Login() {
           console.error('Error');
         }
       } catch (error) {
-        console.error('API call error:', error);
+        console.error('User not exists');
       }
     };
   
