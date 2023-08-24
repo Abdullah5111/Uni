@@ -6,6 +6,7 @@ const MyHome = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
+  const [updatedData, setUpdatedData] = useState({});
 
   useEffect(() => {
     const cookies = document.cookie.split(';');
@@ -32,21 +33,32 @@ const MyHome = () => {
   }, [navigate]);
 
   const saveChanges = () =>{
-
+    axios.put(`http://127.0.0.1:8000/api/links/${data.id}`, updatedData)
   }
+
+  const handleInputChange = (property, value) => {
+    setUpdatedData(prevData => ({
+      ...prevData,
+      [property]: value,
+    }));
+  };
 
   return (
     <div>
       <div>
       {Object.keys(data).map(property => (
+      property !== 'id' && property !== 'user' && (
         <div key={property}>
           <label>{property}:</label>
           <input
             type="text"
-            value={data[property]}
+            defaultValue={data[property]}
+            onChange={e => handleInputChange(property, e.target.value)}
           />
         </div>
-      ))}
+      )
+    ))}
+
     </div>
       <div>
         <button onClick={saveChanges}>Save</button>
