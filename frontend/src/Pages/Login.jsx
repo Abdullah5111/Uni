@@ -2,7 +2,7 @@ import {useState} from "react"
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
-function Login({ onToggleClick }) {
+function Login() {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('');

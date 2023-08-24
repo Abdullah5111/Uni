@@ -1,21 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
-  // const [showLogin, setShowLogin] = useState(true);
+  const navigate = useNavigate();
 
-  // const handleSwitchButtonClick = () => {
-  //   setShowLogin(!showLogin);
-  // };
+  const handleLogout = () => {
+    document.cookie = 'user_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    navigate('/');
+  };
+
+  const userLoggedIn = document.cookie.includes('user_id=');
 
   return (
     <div>
       <nav>
-        <Link className='btn btn-primary' to='/'>Login</Link>
-        <Link className='btn btn-secondary' to='/sign-up'>Signup</Link>
+        {userLoggedIn ? (
+          <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
+        ) : (
+          <>
+            <Link className='btn btn-primary' to='/'>Login</Link>
+            <Link className='btn btn-secondary' to='/sign-up'>Signup</Link>
+          </>
+        )}
       </nav>
-      {/* <div>
-        {showLogin ? <Login onToggleClick={handleSwitchButtonClick} /> : <Signup onToggleClick={handleSwitchButtonClick} />}
-      </div> */}
     </div>
   );
 }
