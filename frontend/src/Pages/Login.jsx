@@ -41,14 +41,14 @@ function Login() {
     };
   
     return (
-      <div>
-        <h2>Login</h2>
-        <div>
-          <label>Username:</label>
+      <div className="container-fluid d-flex flex-column align-items-center">
+        <h2 className="m-3">Login</h2>
+        <div className="m-1 d-flex flex-column align-items-center">
+          <label className="m-1">Username</label>
           <input type="text" value={username} onChange={handleUsernameChange} />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="m-1 d-flex flex-column align-items-center">
+          <label className="m-1">Password</label>
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
         <div>

@@ -65,18 +65,18 @@ function Signup() {
     };
   
     return (
-      <div>
-        <h2>Signup</h2>
-        <div>
-          <label>Username:</label>
+      <div className="container-fluid d-flex flex-column align-items-center">
+        <h2 className="m-3">Signup</h2>
+        <div className="m-1 d-flex flex-column align-items-center">
+          <label className="m-1">Username</label>
           <input type="text" value={username} onChange={handleUsernameChange} />
         </div>
-        <div>
-          <label>Email:</label>
+        <div className="m-1 d-flex flex-column align-items-center">
+          <label className="m-1">Email</label>
           <input type="email" value={email} onChange={handleEmailChange} />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="m-1 d-flex flex-column align-items-center">
+          <label className="m-1">Password</label>
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
         <div>
