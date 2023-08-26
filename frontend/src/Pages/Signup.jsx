@@ -66,7 +66,7 @@ function Signup() {
   
     return (
       <div>
-        <h2>Signup Form</h2>
+        <h2>Signup</h2>
         <div>
           <label>Username:</label>
           <input type="text" value={username} onChange={handleUsernameChange} />

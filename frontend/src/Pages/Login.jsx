@@ -42,7 +42,7 @@ function Login() {
   
     return (
       <div>
-        <h2>Login Form</h2>
+        <h2>Login</h2>
         <div>
           <label>Username:</label>
           <input type="text" value={username} onChange={handleUsernameChange} />

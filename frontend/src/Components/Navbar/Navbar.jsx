@@ -12,13 +12,13 @@ function Navbar() {
 
   return (
     <div>
-      <nav>
+      <nav className='nav nav-tabs'>
         {userLoggedIn ? (
-          <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
+          <button className='nav-item btn btn-danger' onClick={handleLogout}>Logout</button>
         ) : (
           <>
-            <Link className='btn btn-primary' to='/'>Login</Link>
-            <Link className='btn btn-secondary' to='/sign-up'>Signup</Link>
+            <Link className='nav-item nav-link' to='/'>Login</Link>
+            <Link className='nav-item nav-link' to='/sign-up'>Signup</Link>
           </>
         )}
       </nav>
