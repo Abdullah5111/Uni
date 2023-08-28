@@ -14,7 +14,7 @@ function Navbar() {
     <div>
       <nav className='nav nav-tabs'>
         {userLoggedIn ? (
-          <button className='nav-item btn btn-danger' onClick={handleLogout}>Logout</button>
+          <button className='nav-item  nav-link' onClick={handleLogout}>Logout</button>
         ) : (
           <>
             <Link className='nav-item nav-link' to='/'>Login</Link>

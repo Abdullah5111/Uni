@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
+import './Style.css'
 
 function Signup() {
     const navigate = useNavigate();
@@ -65,25 +66,26 @@ function Signup() {
     };
   
     return (
-      <div className="container-fluid d-flex flex-column align-items-center">
-        <h2 className="m-3">Signup</h2>
-        <div className="m-1 d-flex flex-column align-items-center">
-          <label className="m-1">Username</label>
-          <input type="text" value={username} onChange={handleUsernameChange} />
+      <div className="container-fluid d-flex flex-column align-items-center text-dark">
+        <h2 className="m-3 custom-width-div custom-heading">Signup</h2>
+        <div className="m-1 d-flex flex-column align-items-center custom-width-div custom-border">
+          <label className="m-1 custom-font">Username</label>
+          <input className="form-control custom-width" type="text" value={username} onChange={handleUsernameChange} />
         </div>
-        <div className="m-1 d-flex flex-column align-items-center">
-          <label className="m-1">Email</label>
-          <input type="email" value={email} onChange={handleEmailChange} />
+        <div className="m-1 d-flex flex-column align-items-center custom-width-div custom-border">
+          <label className="m-1 custom-font">Email</label>
+          <input className="form-control custom-width" type="email" value={email} onChange={handleEmailChange} />
         </div>
-        <div className="m-1 d-flex flex-column align-items-center">
-          <label className="m-1">Password</label>
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </div>
-        <div>
-          <button onClick={handleSignupButtonClick}>Signup</button>
+        <div className="m-1 d-flex flex-column align-items-center custom-width-div custom-border">
+          <label className="m-1 custom-font">Password</label>
+          <input className="form-control custom-width" type="password" value={password} onChange={handlePasswordChange} />
         </div>
         <div>
-          <Link to="/">Already Account? Login</Link>
+          <button className="m-1 btn btn-primary custom-width-div" onClick={handleSignupButtonClick}>Signup</button>
+        </div>
+        <div className="m-3 d-flex flex-column align-items-center  custom-width-div custom-border">
+          <label className="m-1 custom-font">Already an Account?</label>
+          <Link className="btn btn-outline-primary custom-width"  to="/">Login</Link>
         </div>
       </div>
     );

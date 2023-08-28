@@ -1,0 +1,25 @@
+.custom-width {
+    width: 300px;
+}
+
+.custom-width-div {
+    width: 302px;
+}
+
+.custom-font{
+    font-size: 18px;
+    color: #032a42;
+}
+
+.custom-border{
+    border-top: 2px solid #c9ced1;
+    border-radius: 8px;
+}
+
+.custom-heading{
+    background-color: #032a42;
+    color: #eef1f3;
+    text-align: center;
+    padding: 6px;
+    border-radius: 8px;
+}
