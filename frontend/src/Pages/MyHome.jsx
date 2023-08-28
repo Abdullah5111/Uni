@@ -46,12 +46,13 @@ const MyHome = () => {
   return (
     <div className="container-fluid d-flex flex-column align-items-center text-dark">
       <h2 className="m-3 custom-width-div custom-heading">My Links</h2>
-    <div>
+      <div className='custom-grid'>
       {Object.keys(data).map(property => (
       property !== 'id' && property !== 'user' && (
-        <div key={property}>
-          <label>{property}:</label>
+        <div className="m-1 d-flex flex-column align-items-center" key={property}>
+          <label className="m-1 custom-font">{property}:</label>
           <input
+            className="form-control custom-width" 
             type="text"
             defaultValue={data[property]}
             onChange={e => handleInputChange(property, e.target.value)}
@@ -62,7 +63,7 @@ const MyHome = () => {
 
     </div>
       <div>
-        <button onClick={saveChanges}>Save</button>
+        <button className="m-1 btn btn-outline-primary custom-width" onClick={saveChanges}>Save</button>
       </div>
     </div>
   );
