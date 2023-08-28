@@ -44,8 +44,9 @@ const MyHome = () => {
   };
 
   return (
+    <div className="container-fluid d-flex flex-column align-items-center text-dark">
+      <h2 className="m-3 custom-width-div custom-heading">My Links</h2>
     <div>
-      <div>
       {Object.keys(data).map(property => (
       property !== 'id' && property !== 'user' && (
         <div key={property}>

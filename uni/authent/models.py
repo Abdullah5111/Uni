@@ -10,18 +10,18 @@ class User(models.Model):
     
 class Links(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Links', default=1)
-    linkedin = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    facebook = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    instagram = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    twitter = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    website = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    slack = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    reddit = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    behance = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    dribbble = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    fiverr = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    upwork = models.CharField(max_length=250, unique=True, blank=True, null=True)
-    freelancer = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Linkedin = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Facebook = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Instagram = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Twitter = models.CharField(max_length=250, unique=True, blank=True, null=True)   
+    Slack = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Website = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Reddit = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Behance = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Dribbble = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Fiverr = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Upwork = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    Freelancer = models.CharField(max_length=250, unique=True, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.linkedin

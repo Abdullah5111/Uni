@@ -23,3 +23,23 @@
     padding: 6px;
     border-radius: 8px;
 }
+
+.custom-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .custom-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+}
+  
+@media screen and (max-width: 660px) {
+    .custom-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

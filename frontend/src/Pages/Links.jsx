@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useParams
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Links = () => {
   const navigate = useNavigate()
 
   const { username } = useParams();
-  const [links, setLinks] = useState(null);
+  const [links, setLinks] = useState([]);
 
   const fetchLinks = async () => {
     try {
@@ -22,15 +22,35 @@ const Links = () => {
     fetchLinks();
   }, [username]);
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        console.log(`Copied: ${text}`);
+      })
+      .catch((error) => {
+        console.error('Error copying to clipboard:', error);
+      });
+  };
+
   return (
-    <div>
-      {links && (
-        <ul>
-          <li>LinkedIn: {links.linkedin}</li>
-          <li>Facebook: {links.facebook}</li>
-          <li>Instagram: {links.instagram}</li>
-        </ul>
-      )}
+    <div className="container-fluid d-flex flex-column align-items-center text-dark">
+      <h2 className="m-3 custom-width-div custom-heading">Links of {username}</h2>
+      <div className='custom-grid'>
+      {Object.keys(links).map(property => (
+        property !== 'id' && property !== 'user' && links[property] !== null && links[property] !== '' && (
+          <div className="m-1 d-flex flex-column align-items-center" key={property}>
+            <label className="m-1 custom-font">{property}:</label>
+            <input
+              className="form-control custom-width" 
+              type="text"
+              value={links[property]}
+              readOnly
+            />
+            <button className="m-1 btn btn-outline-primary custom-width" onClick={() => copyToClipboard(links[property])}>Copy</button>
+          </div>
+        )
+      ))}
+      </div>
     </div>
   );
 };
