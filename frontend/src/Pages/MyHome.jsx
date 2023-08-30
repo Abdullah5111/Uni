@@ -11,6 +11,7 @@ const MyHome = () => {
   const [updatedData, setUpdatedData] = useState({});
 
   useEffect(() => {
+    // Extracting UserId from Cookie
     const cookies = document.cookie.split(';');
     let userId = null;
     for (const cookie of cookies) {
@@ -22,6 +23,7 @@ const MyHome = () => {
     }
 
     if (userId) {
+      // Getting Links of Logged in User
       axios.get(`http://127.0.0.1:8000/api/user/links/${userId}`)
         .then(response => {
           setData(response.data);

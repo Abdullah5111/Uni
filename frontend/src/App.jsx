@@ -11,6 +11,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          {/* Defined Routes */}
           <Route path="/" exact element={<Login />} />
           <Route path="/sign-up" exact element={<Signup />} />
           <Route path="/my-home" element={<MyHome />} />

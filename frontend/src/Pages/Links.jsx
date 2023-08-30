@@ -12,6 +12,7 @@ const Links = () => {
 
   const fetchLinks = async () => {
     try {
+      // Getting links of specific username
       const response = await axios.get(`http://127.0.0.1:8000/api/user/links/${username}/`);
       setLinks(response.data);
     } catch (error) {
@@ -27,6 +28,7 @@ const Links = () => {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text)
       .then(() => {
+        // Toast
         toast.success('Link copied to clipboard!', {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 1600,

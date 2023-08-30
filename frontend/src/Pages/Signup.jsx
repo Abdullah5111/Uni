@@ -29,12 +29,15 @@ function Signup() {
       };
 
       try {
+        // Adding New User to Database
         const response = await axios.post('http://127.0.0.1:8000/api/users/', userData);
   
         if (response.status === 201) {
           const userId = response.data.id;
           
           document.cookie = `user_id=${userId}; path=/`;
+
+          // Creating Empty Links for Newly Registered User
 
           const linksData = {
             user: userId,
@@ -51,7 +54,7 @@ function Signup() {
             upwork: null,
             freelancer: null,
           };
-  
+          
           await axios.post('http://127.0.0.1:8000/api/links/', linksData);
           
           navigate('/my-home');
