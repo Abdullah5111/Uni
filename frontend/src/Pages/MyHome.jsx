@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const MyHome = () => {
@@ -34,6 +36,11 @@ const MyHome = () => {
 
   const saveChanges = () =>{
     axios.put(`http://127.0.0.1:8000/api/links/${data.id}`, updatedData)
+
+    toast.success('Changes Saved!', {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 1600,
+    });
   }
 
   const handleInputChange = (property, value) => {
@@ -65,6 +72,7 @@ const MyHome = () => {
       <div>
         <button className="m-1 btn btn-outline-primary custom-width" onClick={saveChanges}>Save</button>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

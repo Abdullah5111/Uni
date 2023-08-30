@@ -1,5 +1,7 @@
 import {useState} from "react"
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, Link } from 'react-router-dom';
 import './Style.css'
 
@@ -32,7 +34,6 @@ function Login() {
           
           navigate('/my-home');
           
-          console.log('User logged in successfully');
         } else {
           console.error('Error');
         }
@@ -59,6 +60,7 @@ function Login() {
           <label className="m-1 custom-font">New User?</label>
           <Link className="btn btn-outline-primary custom-width" to="/sign-up">Signup</Link>
         </div>
+        <ToastContainer/>
       </div>
     );
   }

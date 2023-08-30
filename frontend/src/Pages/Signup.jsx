@@ -55,8 +55,7 @@ function Signup() {
           await axios.post('http://127.0.0.1:8000/api/links/', linksData);
           
           navigate('/my-home');
-          
-          console.log('User registered successfully');
+
         } else {
           console.error('Error registering user');
         }

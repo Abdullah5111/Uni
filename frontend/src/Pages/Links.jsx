@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 const Links = () => {
@@ -25,6 +27,10 @@ const Links = () => {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text)
       .then(() => {
+        toast.success('Link copied to clipboard!', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1600,
+        });
         console.log(`Copied: ${text}`);
       })
       .catch((error) => {
@@ -51,6 +57,7 @@ const Links = () => {
         )
       ))}
       </div>
+      <ToastContainer />
     </div>
   );
 };
