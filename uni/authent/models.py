@@ -1,5 +1,6 @@
 from django.db import models
 
+# User model
 class User(models.Model):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
@@ -7,7 +8,8 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
-    
+
+# Model to hold links   
 class Links(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Links', default=1)
     Linkedin = models.CharField(max_length=250, unique=True, blank=True, null=True)

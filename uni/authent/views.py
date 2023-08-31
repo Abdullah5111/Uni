@@ -5,10 +5,12 @@ from .serializers import UserSerializer, LinksSerializer
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 
+# All users get view
 class UserListCreateView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+# User with specific id CRUD
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -17,12 +19,14 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
-    
+
+# Get user by name view    
 class UserByUsernameView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = 'username'
 
+# User login view
 class UserLoginView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -39,22 +43,25 @@ class UserLoginView(generics.CreateAPIView):
                 return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
             return Response({'message': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
-        
+
+# Get all links view        
 class LinksListCreateView(generics.ListCreateAPIView):
     queryset = Links.objects.all()
     serializer_class = LinksSerializer
 
+# Specific link by id CRUD
 class LinksDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Links.objects.all()
     serializer_class = LinksSerializer
 
+# Get link by user id
 class LinksByUserIdView(generics.RetrieveAPIView):
-    queryset = Links.objects.all()  # Your queryset for the Links model
+    queryset = Links.objects.all()
     serializer_class = LinksSerializer
 
     def get_object(self):
-        user_id = self.kwargs['user_id']  # Get the user_id from URL parameter
-        links = get_object_or_404(Links, user_id=user_id)  # Query Links by user_id
+        user_id = self.kwargs['user_id']
+        links = get_object_or_404(Links, user_id=user_id)
         return links
 
     def get(self, request, *args, **kwargs):
@@ -62,6 +69,7 @@ class LinksByUserIdView(generics.RetrieveAPIView):
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
+# Get links by username
 class LinksByUsernameView(generics.RetrieveAPIView):
     queryset = Links.objects.all()
     serializer_class = LinksSerializer
