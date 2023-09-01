@@ -46,7 +46,7 @@ function Login() {
       <div className="container-fluid d-flex flex-column align-items-center text-dark">
         <h2 className="m-3 custom-width-div custom-heading">Login</h2>
         <div className="m-1 d-flex flex-column align-items-center custom-width-div custom-border">
-          <label className="m-1 custom-font">Username</label>
+          <label className="m-1 custom-font">Email</label>
           <input className="form-control custom-width" type="text" value={username} onChange={handleUsernameChange} />
         </div>
         <div className="m-1 d-flex flex-column align-items-center custom-width-div custom-border">
